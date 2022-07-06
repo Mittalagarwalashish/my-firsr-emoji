@@ -1,0 +1,288 @@
+Microsoft Windows [Version 10.0.19044.1586]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\DELL>ssh -i Downloads\ashish_agarwal.pem ec2-user@65.0.71.173
+The authenticity of host '65.0.71.173 (65.0.71.173)' can't be established.
+ECDSA key fingerprint is SHA256:ID6b47rBHeYqdHUE4CEEjpGlDbAsQbZUnlYU/+Z9W5c.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '65.0.71.173' (ECDSA) to the list of known hosts.
+Last login: Mon May 30 03:02:25 2022 from 182.68.114.72
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux 2 AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-2/
+2 package(s) needed for security, out of 10 available
+Run "sudo yum update" to apply all updates.
+[ec2-user@ip-172-31-7-224 ~]$ sudo -i
+[root@ip-172-31-7-224 ~]# ls
+dep.yml  ec2-user@15.206.157.11  kube  rc.yml  rs1.yml  rs.yml  shiv.yml
+[root@ip-172-31-7-224 ~]# kubectl get namespace
+NAME              STATUS   AGE
+default           Active   6d22h
+kube-node-lease   Active   6d22h
+kube-public       Active   6d22h
+kube-system       Active   6d22h
+[root@ip-172-31-7-224 ~]# kubectl get pod -n kube-system
+NAME                                                                  READY   STATUS    RESTARTS      AGE
+calico-kube-controllers-56cdb7c587-vcqmw                              1/1     Running   5 (10m ago)   6d22h
+calico-node-qlm28                                                     0/1     Running   5 (10m ago)   6d22h
+calico-node-z54xc                                                     0/1     Running   5 (10m ago)   6d22h
+coredns-6d4b75cb6d-575pz                                              1/1     Running   5 (10m ago)   6d22h
+coredns-6d4b75cb6d-smmwx                                              1/1     Running   5 (10m ago)   6d22h
+etcd-ip-172-31-7-224.ap-south-1.compute.internal                      1/1     Running   5 (10m ago)   6d22h
+kube-apiserver-ip-172-31-7-224.ap-south-1.compute.internal            1/1     Running   5 (10m ago)   6d22h
+kube-controller-manager-ip-172-31-7-224.ap-south-1.compute.internal   1/1     Running   5 (10m ago)   6d22h
+kube-proxy-8z4rj                                                      1/1     Running   5 (10m ago)   6d22h
+kube-proxy-b8bsw                                                      1/1     Running   5 (10m ago)   6d22h
+kube-scheduler-ip-172-31-7-224.ap-south-1.compute.internal            1/1     Running   5 (10m ago)   6d22h
+[root@ip-172-31-7-224 ~]# kubectl get pod -n kube-public
+No resources found in kube-public namespace.
+[root@ip-172-31-7-224 ~]# kubectl get pod -n kube-node-lease
+No resources found in kube-node-lease namespace.
+[root@ip-172-31-7-224 ~]# kubectl get pod -n default
+NAME                                READY   STATUS    RESTARTS      AGE
+nginx-6ghvs                         1/1     Running   3 (14m ago)   3d23h
+nginx-9jdcv                         1/1     Running   3 (14m ago)   3d23h
+nginx-bsv9s                         1/1     Running   3 (14m ago)   3d23h
+nginx-cn9g2                         1/1     Running   3 (14m ago)   3d23h
+nginx-deployment-7bf57db4cc-2r7v5   1/1     Running   1 (14m ago)   23h
+nginx-deployment-7bf57db4cc-6z647   1/1     Running   1 (14m ago)   23h
+nginx-deployment-7bf57db4cc-b6qxj   1/1     Running   1 (14m ago)   23h
+nginx-deployment-7bf57db4cc-h2hp4   1/1     Running   1 (14m ago)   23h
+nginx-deployment-7bf57db4cc-kk6t4   1/1     Running   1 (14m ago)   23h
+nginx-deployment-7bf57db4cc-qtzbk   1/1     Running   1 (14m ago)   23h
+nginx-nbnvk                         1/1     Running   3 (14m ago)   3d23h
+nginx-qt2qg                         1/1     Running   3 (14m ago)   3d23h
+nginx-xphrm                         1/1     Running   3 (14m ago)   3d23h
+po1                                 1/1     Running   3 (14m ago)   3d23h
+rc1-8snvt                           1/1     Running   3 (14m ago)   3d23h
+rc1-p7lwf                           1/1     Running   3 (14m ago)   3d23h
+rc2-5z56m                           1/1     Running   3 (14m ago)   3d23h
+rc2-9fkz2                           1/1     Running   3 (14m ago)   3d22h
+rc2-jbjv4                           1/1     Running   3 (14m ago)   3d22h
+rc2-p6lff                           1/1     Running   3 (14m ago)   3d23h
+rc2-skrzb                           1/1     Running   3 (14m ago)   3d23h
+rs1-mrvtz                           1/1     Running   2 (14m ago)   2d23h
+rs1-sw62v                           1/1     Running   2 (14m ago)   2d23h
+[root@ip-172-31-7-224 ~]# kubectl get all -n default
+NAME                                    READY   STATUS    RESTARTS      AGE
+pod/nginx-6ghvs                         1/1     Running   3 (21m ago)   3d23h
+pod/nginx-9jdcv                         1/1     Running   3 (21m ago)   3d23h
+pod/nginx-bsv9s                         1/1     Running   3 (21m ago)   3d23h
+pod/nginx-cn9g2                         1/1     Running   3 (21m ago)   3d23h
+pod/nginx-deployment-7bf57db4cc-2r7v5   1/1     Running   1 (22m ago)   23h
+pod/nginx-deployment-7bf57db4cc-6z647   1/1     Running   1 (21m ago)   23h
+pod/nginx-deployment-7bf57db4cc-b6qxj   1/1     Running   1 (21m ago)   23h
+pod/nginx-deployment-7bf57db4cc-h2hp4   1/1     Running   1 (21m ago)   23h
+pod/nginx-deployment-7bf57db4cc-kk6t4   1/1     Running   1 (21m ago)   23h
+pod/nginx-deployment-7bf57db4cc-qtzbk   1/1     Running   1 (22m ago)   23h
+pod/nginx-nbnvk                         1/1     Running   3 (21m ago)   3d23h
+pod/nginx-qt2qg                         1/1     Running   3 (21m ago)   3d23h
+pod/nginx-xphrm                         1/1     Running   3 (21m ago)   3d23h
+pod/po1                                 1/1     Running   3 (21m ago)   3d23h
+pod/rc1-8snvt                           1/1     Running   3 (22m ago)   3d23h
+pod/rc1-p7lwf                           1/1     Running   3 (21m ago)   3d23h
+pod/rc2-5z56m                           1/1     Running   3 (21m ago)   3d23h
+pod/rc2-9fkz2                           1/1     Running   3 (22m ago)   3d22h
+pod/rc2-jbjv4                           1/1     Running   3 (22m ago)   3d22h
+pod/rc2-p6lff                           1/1     Running   3 (21m ago)   3d23h
+pod/rc2-skrzb                           1/1     Running   3 (22m ago)   3d23h
+pod/rs1-mrvtz                           1/1     Running   2 (21m ago)   2d23h
+pod/rs1-sw62v                           1/1     Running   2 (21m ago)   2d23h
+
+NAME                          DESIRED   CURRENT   READY   AGE
+replicationcontroller/nginx   7         7         7       3d23h
+replicationcontroller/rc1     3         3         3       3d23h
+replicationcontroller/rc2     5         5         5       3d23h
+
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   6d23h
+
+NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/nginx-deployment   6/6     6            6           2d23h
+
+NAME                                          DESIRED   CURRENT   READY   AGE
+replicaset.apps/nginx-deployment-6b5bff498d   0         0         0       2d23h
+replicaset.apps/nginx-deployment-7bf57db4cc   6         6         6       23h
+replicaset.apps/rs1                           2         2         2       2d23h
+[root@ip-172-31-7-224 ~]# kubectl get all -n kube-public
+No resources found in kube-public namespace.
+[root@ip-172-31-7-224 ~]# kubectl get all -n kube-system
+NAME                                                                      READY   STATUS    RESTARTS      AGE
+pod/calico-kube-controllers-56cdb7c587-vcqmw                              1/1     Running   5 (24m ago)   6d23h
+pod/calico-node-qlm28                                                     0/1     Running   5 (24m ago)   6d23h
+pod/calico-node-z54xc                                                     0/1     Running   5 (24m ago)   6d23h
+pod/coredns-6d4b75cb6d-575pz                                              1/1     Running   5 (24m ago)   6d23h
+pod/coredns-6d4b75cb6d-smmwx                                              1/1     Running   5 (24m ago)   6d23h
+pod/etcd-ip-172-31-7-224.ap-south-1.compute.internal                      1/1     Running   5 (24m ago)   6d23h
+pod/kube-apiserver-ip-172-31-7-224.ap-south-1.compute.internal            1/1     Running   5 (24m ago)   6d23h
+pod/kube-controller-manager-ip-172-31-7-224.ap-south-1.compute.internal   1/1     Running   5 (24m ago)   6d23h
+pod/kube-proxy-8z4rj                                                      1/1     Running   5 (24m ago)   6d23h
+pod/kube-proxy-b8bsw                                                      1/1     Running   5 (24m ago)   6d23h
+pod/kube-scheduler-ip-172-31-7-224.ap-south-1.compute.internal            1/1     Running   5 (24m ago)   6d23h
+
+NAME               TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
+service/kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   6d23h
+
+NAME                         DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE
+daemonset.apps/calico-node   2         2         0       2            0           kubernetes.io/os=linux   6d23h
+daemonset.apps/kube-proxy    2         2         2       2            2           kubernetes.io/os=linux   6d23h
+
+NAME                                      READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/calico-kube-controllers   1/1     1            1           6d23h
+deployment.apps/coredns                   2/2     2            2           6d23h
+
+NAME                                                 DESIRED   CURRENT   READY   AGE
+replicaset.apps/calico-kube-controllers-56cdb7c587   1         1         1       6d23h
+replicaset.apps/coredns-6d4b75cb6d                   2         2         2       6d23h
+[root@ip-172-31-7-224 ~]# kubectl run web --image=nginx  -n kube-public
+pod/web created
+[root@ip-172-31-7-224 ~]# kubectl get po
+NAME                                READY   STATUS    RESTARTS      AGE
+nginx-6ghvs                         1/1     Running   3 (27m ago)   3d23h
+nginx-9jdcv                         1/1     Running   3 (27m ago)   3d23h
+nginx-bsv9s                         1/1     Running   3 (27m ago)   3d23h
+nginx-cn9g2                         1/1     Running   3 (27m ago)   3d23h
+nginx-deployment-7bf57db4cc-2r7v5   1/1     Running   1 (27m ago)   23h
+nginx-deployment-7bf57db4cc-6z647   1/1     Running   1 (27m ago)   23h
+nginx-deployment-7bf57db4cc-b6qxj   1/1     Running   1 (27m ago)   23h
+nginx-deployment-7bf57db4cc-h2hp4   1/1     Running   1 (27m ago)   23h
+nginx-deployment-7bf57db4cc-kk6t4   1/1     Running   1 (27m ago)   23h
+nginx-deployment-7bf57db4cc-qtzbk   1/1     Running   1 (27m ago)   23h
+nginx-nbnvk                         1/1     Running   3 (27m ago)   3d23h
+nginx-qt2qg                         1/1     Running   3 (27m ago)   3d23h
+nginx-xphrm                         1/1     Running   3 (27m ago)   3d23h
+po1                                 1/1     Running   3 (27m ago)   3d23h
+rc1-8snvt                           1/1     Running   3 (27m ago)   3d23h
+rc1-p7lwf                           1/1     Running   3 (27m ago)   3d23h
+rc2-5z56m                           1/1     Running   3 (27m ago)   3d23h
+rc2-9fkz2                           1/1     Running   3 (27m ago)   3d23h
+rc2-jbjv4                           1/1     Running   3 (27m ago)   3d23h
+rc2-p6lff                           1/1     Running   3 (27m ago)   3d23h
+rc2-skrzb                           1/1     Running   3 (27m ago)   3d23h
+rs1-mrvtz                           1/1     Running   2 (27m ago)   2d23h
+rs1-sw62v                           1/1     Running   2 (27m ago)   2d23h
+[root@ip-172-31-7-224 ~]# kubectl get po -n kube-public
+NAME   READY   STATUS    RESTARTS   AGE
+web    1/1     Running   0          27s
+[root@ip-172-31-7-224 ~]# ls
+dep.yml  ec2-user@15.206.157.11  kube  rc.yml  rs1.yml  rs.yml  shiv.yml
+[root@ip-172-31-7-224 ~]# vi rc.yml
+[root@ip-172-31-7-224 ~]# kubectl run web --image=nginx --dry-run=client -o yaml>po.yaml
+[root@ip-172-31-7-224 ~]# kubectl run web --image=nginx --dry-run=client -o yaml>po.yaml
+[root@ip-172-31-7-224 ~]# ls
+dep.yml  ec2-user@15.206.157.11  kube  po.yaml  rc.yml  rs1.yml  rs.yml  shiv.yml
+[root@ip-172-31-7-224 ~]# vi po.yaml
+[root@ip-172-31-7-224 ~]# kubectl run web1 --image=nginx -n kube-public --dry-run=client -o yaml>po1.yaml
+[root@ip-172-31-7-224 ~]# ls
+dep.yml  ec2-user@15.206.157.11  kube  po1.yaml  po.yaml  rc.yml  rs1.yml  rs.yml  shiv.yml
+[root@ip-172-31-7-224 ~]# vi po1.yaml
+[root@ip-172-31-7-224 ~]# kubectl create -f po1.yaml
+pod/web1 created
+[root@ip-172-31-7-224 ~]# cat po.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: web
+  name: web
+spec:
+  containers:
+  - image: nginx
+    name: web
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+[root@ip-172-31-7-224 ~]# cat po1.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: web1
+  name: web1
+  namespace: kube-public
+spec:
+  containers:
+  - image: nginx
+    name: web1
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+[root@ip-172-31-7-224 ~]# kubectl get po -n kube-public
+NAME   READY   STATUS    RESTARTS   AGE
+web    1/1     Running   0          26m
+web1   1/1     Running   0          38s
+[root@ip-172-31-7-224 ~]# kubectl create namespace python
+namespace/python created
+[root@ip-172-31-7-224 ~]# kubectl get ns
+NAME              STATUS   AGE
+default           Active   6d23h
+kube-node-lease   Active   6d23h
+kube-public       Active   6d23h
+kube-system       Active   6d23h
+python            Active   10s
+[root@ip-172-31-7-224 ~]# vi ns.yaml
+[root@ip-172-31-7-224 ~]# kubectl create -f ns.yaml
+error: error validating "ns.yaml": error validating data: apiVersion not set; if you choose to ignore these errors, turn validation off with --validate=false
+[root@ip-172-31-7-224 ~]# vi ns.yaml
+[root@ip-172-31-7-224 ~]# kubectl create -f ns.yaml
+error: error parsing ns.yaml: error converting YAML to JSON: yaml: mapping values are not allowed in this context
+[root@ip-172-31-7-224 ~]# vi ns.yaml
+[root@ip-172-31-7-224 ~]# kubectl create -f ns.yaml
+error: error parsing ns.yaml: error converting YAML to JSON: yaml: mapping values are not allowed in this context
+[root@ip-172-31-7-224 ~]# vi ns.yaml
+[root@ip-172-31-7-224 ~]# [root@ip-172-31-7-224 ~]# kubectl create -f ns.yaml
+error: error parsing ns.yaml: error converting YAML to JSON: yaml: mapping values are not allowed in this context
+[root@ip-172-31-7-224 ~]# vi ns.yaml
+[root@ip-172-31-7-224 ~]# kubectl get ns
+NAME              STATUS   AGE
+default           Active   6d23h
+kube-node-lease   Active   6d23h
+kube-public       Active   6d23h
+kube-system       Active   6d23h
+python            Active   8m11s
+[root@ip-172-31-7-224 ~]# vi ns.yaml
+[root@ip-172-31-7-224 ~]# kubectl create -f ns.yaml
+error: error parsing ns.yaml: error converting YAML to JSON: yaml: mapping values are not allowed in this context
+[root@ip-172-31-7-224 ~]# vi ns.yaml
+[root@ip-172-31-7-224 ~]# [root@ip-172-31-7-224 ~]# kubectl create -f ns.yaml
+namespace/java created
+[root@ip-172-31-7-224 ~]# kubectl get ns
+NAME              STATUS   AGE
+default           Active   6d23h
+java              Active   72s
+kube-node-lease   Active   6d23h
+kube-public       Active   6d23h
+kube-system       Active   6d23h
+python            Active   10m
+[root@ip-172-31-7-224 ~]# kubectl describe namespaces kube-public
+Name:         kube-public
+Labels:       kubernetes.io/metadata.name=kube-public
+Annotations:  <none>
+Status:       Active
+
+No resource quota.
+
+No LimitRange resource.
+[root@ip-172-31-7-224 ~]# kubectl describe namespace kube-public
+Name:         kube-public
+Labels:       kubernetes.io/metadata.name=kube-public
+Annotations:  <none>
+Status:       Active
+
+No resource quota.
+
+No LimitRange resource.
+[root@ip-172-31-7-224 ~]# exit
+logout
+[ec2-user@ip-172-31-7-224 ~]$ exit
+logout
+Connection to 65.0.71.173 closed.
+
+C:\Users\DELL>
